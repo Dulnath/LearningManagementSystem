@@ -3,6 +3,7 @@ package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.StudentRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,10 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){
         studentRepository.save(std);
-        return "redirect:/allstudents";
+        return "redirect:/allStudents";
     }
 
     @RequestMapping(value="/editStudent/{id}")

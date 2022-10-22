@@ -12,20 +12,13 @@
     <h1>Create New Student</h1>
     <br />
     <div class="col-sm-4">
-        <form action="#" th:action="@{/addStudent}" th:object="${student}" method="post">
+        <form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post">
 
             <div alight="left">
                 <tr>
                     <label class="form-label" >First Name</label>
                     <td>
-                        <input type="text" th:field="*{id}" class="form-control" placeholder="Student Name" />
-                    </td>
-                </tr>
-            </div>
-            <div alight="left">
-                <tr>
-                    <label class="form-label" >First Name</label>
-                    <td>
+                        <input type="hidden" th:field="*{id}" />
                         <input type="text" th:field="*{firstName}" class="form-control" placeholder="Student Name" />
                     </td>
                 </tr>
