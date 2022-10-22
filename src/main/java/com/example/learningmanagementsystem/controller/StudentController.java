@@ -5,9 +5,6 @@ import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.StudentRepository;
 import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.mongodb.core.ExecutableInsertOperation;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,15 +23,21 @@ public class StudentController {
 
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){
-
         std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         studentRepository.save(std);
         return "redirect:/allStudents";
     }
 
+    @RequestMapping(value = "/saveExistingStudent", method = RequestMethod.POST)
+    public String saveExistingStudent(@ModelAttribute("student") Student std){
+        System.out.println("Working");
+        studentRepository.save(std);
+        return "editstudent";
+    }
+
     @RequestMapping(value="/editStudent/{id}")
     public ModelAndView showEditStudentPage(@PathVariable(name = "id") long id) {
-        ModelAndView mav = new ModelAndView("newstudent");
+        ModelAndView mav = new ModelAndView("editstudent");
         Optional<Student> std = studentRepository.findById((int)id);
         mav.addObject("student", std);
         return mav;
