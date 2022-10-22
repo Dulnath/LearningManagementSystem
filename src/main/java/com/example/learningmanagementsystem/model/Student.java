@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
@@ -17,13 +18,15 @@ import javax.persistence.GenerationType;
 @ToString
 @Document(collection="Student")
 public class Student {
-    private int id;
+    @Transient
+    public static final String SEQUENCE_NAME = "users_sequence";
+    private long id;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String address;
 
-    public Student(int id, String firstName, String lastName, String dateOfBirth, String address) {
+    public Student(String firstName, String lastName, String dateOfBirth, String address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

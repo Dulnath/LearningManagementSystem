@@ -3,8 +3,11 @@ package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.StudentRepository;
-import org.bson.types.ObjectId;
+import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.ExecutableInsertOperation;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +21,21 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
+
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){
+
+        std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         studentRepository.save(std);
         return "redirect:/allStudents";
     }
 
     @RequestMapping(value="/editStudent/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id) {
+    public ModelAndView showEditStudentPage(@PathVariable(name = "id") long id) {
         ModelAndView mav = new ModelAndView("newstudent");
-        Optional<Student> std = studentRepository.findById(id);
+        Optional<Student> std = studentRepository.findById((int)id);
         mav.addObject("student", std);
         return mav;
 
@@ -45,8 +53,8 @@ public class StudentController {
         return "newstudent";
     }
     @RequestMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable int id){
-        studentRepository.deleteById(id);
+    public String deleteStudent(@PathVariable long id){
+        studentRepository.deleteById((int)id);
         return "redirect:/allStudents";
     }
 
