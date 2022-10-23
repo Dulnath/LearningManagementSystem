@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString
-@Document(collection="Student")
+@Document(collection="Subject")
 public class Subject {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
