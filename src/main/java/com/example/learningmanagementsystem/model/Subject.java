@@ -15,19 +15,14 @@ public class Subject {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
     private long id;
-    private String firstName;
-    private String lastName;
-    private String dateOfBirth;
-    private String address;
+    private String subjectName;
 
-    public Subject(String firstName, String lastName, String dateOfBirth, String address) {
+
+    public Subject(String subjectName) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-    }
+        this.subjectName = subjectName;
 
+    }
     public Subject() {
 
     }

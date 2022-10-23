@@ -15,33 +15,14 @@
         <form action="#" th:action="@{/saveSubject}" th:object="${subject}" method="post">
             <div alight="left">
                 <tr>
-                    <label class="form-label" >First Name</label>
+                    <label class="form-label" >Subject Name</label>
                     <td>
                         <input type="hidden" th:field="*{id}" />
-                        <input type="text" th:field="*{firstName}" class="form-control" placeholder="Subject Name" />
+                        <input type="text" th:field="*{subjectName}" class="form-control" placeholder="Subject Name" />
                     </td>
                 </tr>
             </div>
 
-            <div alight="left">
-
-                <tr>
-                    <label class="form-label" >Last Name</label>
-                    <td><input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" /></td>
-                </tr>
-            </div>
-            <div alight="left">
-                <tr>
-                    <label class="form-label" >Date of Birth</label>
-                    <td><input type="text" th:field="*{dateOfBirth}" class="form-control" placeholder="DOB" /></td>
-                </tr>
-            </div>
-            <div alight="left">
-                <tr>
-                    <label class="form-label" >Address</label>
-                    <td><input type="text" th:field="*{address}" class="form-control" placeholder="Address" /></td>
-                </tr>
-            </div>
             <br>
             <tr>
                 <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
