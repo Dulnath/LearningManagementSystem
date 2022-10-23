@@ -1,9 +1,10 @@
 package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Announcement;
-
+import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.AnnouncementRepository;
-
+import com.example.learningmanagementsystem.repository.StudentRepository;
+import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,25 +19,35 @@ public class AnnouncementController {
     @Autowired
     private AnnouncementRepository announcementRepository;
 
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
 
-    @RequestMapping(value = "/addAnnouncement", method = RequestMethod.POST)
-    public String saveAnnouncement(@ModelAttribute("announcement") Announcement anncmnt){
-        announcementRepository.save(anncmnt);
-        return "redirect:/allannouncements";
+    @RequestMapping(value = "/saveAnnouncement", method = RequestMethod.POST)
+    public String saveAnnouncement(@ModelAttribute("announcement") Announcement ancmnt){
+        ancmnt.setId(sequenceGeneratorService.generateSequence(Announcement.SEQUENCE_NAME));
+        announcementRepository.save(ancmnt);
+        return "redirect:/allAnnouncements";
+    }
+
+    @RequestMapping(value = "/saveExistingAnnouncement", method = RequestMethod.POST)
+    public String saveExistingAnnouncement(@ModelAttribute("announcement") Announcement ancmnt){
+        System.out.println("Working");
+        announcementRepository.save(ancmnt);
+        return "editannouncement";
     }
 
     @RequestMapping(value="/editAnnouncement/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("newannouncement");
-        Optional<Announcement> anncmnt = announcementRepository.findById(id);
-        mav.addObject("announcement", anncmnt);
+    public ModelAndView showEditAnnouncementPage(@PathVariable(name = "id") long id) {
+        ModelAndView mav = new ModelAndView("editannouncement");
+        Optional<Announcement> ancmnt = announcementRepository.findById((int)id);
+        mav.addObject("announcement", ancmnt);
         return mav;
 
     }
     @GetMapping("/allAnnouncements")
-    public String getAnnouncements(Model model){
-        List<Announcement>  listsannouncements = announcementRepository.findAll();
-        model.addAttribute("listannouncement",listsannouncements);
+    public String getStudents(Model model){
+        List<Announcement>  listannouncement = announcementRepository.findAll();
+        model.addAttribute("listannouncement",listannouncement);
         return "allannouncements";
     }
 
@@ -45,11 +56,11 @@ public class AnnouncementController {
         model.addAttribute("announcement",new Announcement());
         return "newannouncement";
     }
-    /*
-    @RequestMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable int id){
-        announcementRepository.deleteById(id);
+    @RequestMapping("/deleteAnnouncement/{id}")
+    public String deleteAnnouncement(@PathVariable long id){
+        announcementRepository.deleteById((int)id);
         return "redirect:/allAnnouncements";
-    }*/
+    }
 
 }
+

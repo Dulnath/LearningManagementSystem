@@ -11,7 +11,7 @@
     <h2 >Announcement List</h2>
     <tr>
         <div align = "left" >
-            <h3><a  th:href="@{'/newStudent'}">Add new</a></h3>
+            <h3><a  th:href="@{'/newAnnouncement'}">Add new</a></h3>
         </div>
 
     </tr>
@@ -23,7 +23,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Announcement ID</th>
-                        <th>Announcement Topic</th>
+                        <th>Announcement Name</th>
                         <th>Posted By</th>
                         <th>Posted Date</th>
                         <th>Description</th>>
@@ -34,7 +34,7 @@
                     <tbody>
                     <tr  th:each="announcement : ${listannouncement }">
                         <td th:text="${announcement.id}">Announcement ID</td>
-                        <td th:text="${announcement.announcementName}">Announcement Topic</td>
+                        <td th:text="${announcement.announcementName}">Announcement Name</td>
                         <td th:text="${announcement.postedBy}">Posted By</td>
                         <td th:text="${announcement.postedDate}">Posted Date</td>
                         <td th:text="${announcement.description}">Description</td>
