@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 @Document(collection="Student")
-public class Student {
+public class Subject {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
     private long id;
@@ -20,7 +20,7 @@ public class Student {
     private String dateOfBirth;
     private String address;
 
-    public Student(String firstName, String lastName, String dateOfBirth, String address) {
+    public Subject(String firstName, String lastName, String dateOfBirth, String address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,7 +28,7 @@ public class Student {
         this.address = address;
     }
 
-    public Student() {
+    public Subject() {
 
     }
 }
