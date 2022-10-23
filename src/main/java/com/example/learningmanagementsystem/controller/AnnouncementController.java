@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class TestController {
+public class AnnouncementController {
     @Autowired
     private StudentRepository studentRepository;
 
