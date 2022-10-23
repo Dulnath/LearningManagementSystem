@@ -18,8 +18,8 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("student") Student std){
-        studentRepository.save(std);
+    public String saveStudent(@ModelAttribute("student") Student abc){
+        studentRepository.save(abc);
         return "redirect:/allstudents";
     }
 
