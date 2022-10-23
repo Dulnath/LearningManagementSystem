@@ -21,7 +21,6 @@ public class Student {
     private String address;
 
     public Student(String firstName, String lastName, String dateOfBirth, String address) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
