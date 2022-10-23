@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Add new topic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div>
+    <h2 >Comment List</h2>
+
+        <div class="col-sm-5" align = "center">
+            <div class="panel-body" align = "center" >
+                <table class="table">
+                    <thead >
+                    <tr class="thead-dark">
+                        <th>Title</th>
+                    <tr  th:each="forum : ${listForum }">
+                        <td th:text="${forum.title}">Title</td></tr>
+                    </tr>
+                    <tr class="thead-dark">
+                        <th>Comment</th>
+                    <tr  th:each="forum : ${listForum }">
+                        <td th:text="${forum.comment}">Title</td></tr>
+                    </tr>
+                    </thead>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+</div>
+
+</body>
+</html>
