@@ -57,7 +57,7 @@ public class SubjectController {
         model.addAttribute("subject",new Subject());
         return "newsubject";
     }
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/remove/{id}")
     public String deleteSubject(@PathVariable long id){
         subjectRepository.deleteById((int)id);
         return "redirect:/allSubjects";
