@@ -1,6 +1,5 @@
 package com.example.learningmanagementsystem.controller;
 
-
 import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.StudentRepository;
 import com.example.learningmanagementsystem.services.SequenceGeneratorService;

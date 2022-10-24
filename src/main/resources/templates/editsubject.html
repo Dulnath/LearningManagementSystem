@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit Subject</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+  <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div align="center">
+  <h1>Edit Selected Subject</h1>
+  <br />
+  <div class="col-sm-4">
+    <form action="#" th:action="@{/saveExistingSubject}" th:object="${subject}" method="post">
+      <div alight="left">
+        <tr>
+          <label class="form-label" >First Name</label>
+          <td>
+            <input type="hidden" th:field="*{id}" />
+            <input type="text" th:field="*{subjectName}" class="form-control" placeholder="Subject Name" />
+          </td>
+        </tr>
+      </div>
+
+      <br>
+      <tr>
+        <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+      </tr>
+      <tr>
+        <td>
+          <h3><a th:href="@{'/allSubjects'}">View All</a></h3>
+        </td>
+      </tr>
+      </table>
+    </form>
+  </div>
+</div>
+</body>
+</html>
