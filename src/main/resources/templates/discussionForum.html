@@ -14,19 +14,22 @@
         <div class="col-sm-5" align = "center">
             <div class="panel-body" align = "center" >
                 <table class="table">
-                    <thead >
-                    <tr class="thead-dark">
+                    <thead class="thead-dark">
+                    <tr>
                         <th>Title</th>
-                    <tr  th:each="forum : ${listForum }">
-                        <td th:text="${forum.title}">Title</td></tr>
-                    </tr>
-                    <tr class="thead-dark">
                         <th>Comment</th>
-                    <tr  th:each="forum : ${listForum }">
-                        <td th:text="${forum.comment}">Title</td></tr>
-                        <td></td>
-                    </tr>
                     </thead>
+                    <tbody>
+                    <tr  th:each="forum : ${listForum }">
+                        <td th:text="${forum.title}">Title</td>
+                        <td th:text="${forum.comment}">Title</td>
+                        <td>
+                            <a th:href="@{'/editComment/' + ${forum.id}}">Edit</a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/deleteComment/' + ${forum.id}}">Delete</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
 

@@ -15,12 +15,6 @@ public class DiscussionForum {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
     private long id;
-    //private String studentFirstName;
-    //private String studentLastName;
-    //private int teacherId;
-    //private String teacherFirstName;
-    //private String teacherLastName;
-    //private int responseTo;
     private String title;
     private String comment;
 
