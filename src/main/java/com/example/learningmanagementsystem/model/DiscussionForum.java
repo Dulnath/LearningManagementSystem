@@ -19,7 +19,6 @@ public class DiscussionForum {
     private String comment;
 
     public DiscussionForum(String title, String comment){
-        this.id = id;
         this.title = title;
         this.comment = comment;
     }

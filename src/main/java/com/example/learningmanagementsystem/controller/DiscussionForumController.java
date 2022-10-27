@@ -24,14 +24,15 @@ public class DiscussionForumController {
 
     // Functionality of save button
     @RequestMapping (value="/saveComment", method=RequestMethod.POST)
-    public String saveComment(@ModelAttribute("discussionForum") DiscussionForum df){
+    public String saveComment(@ModelAttribute("comment") DiscussionForum df){
         df.setId(sequenceGeneratorService.generateSequence(DiscussionForum.SEQUENCE_NAME));
         discussionForumRepository.save(df);
         return "redirect:/allComments";
     }
 
+    // Save updated content
     @RequestMapping(value = "/saveExistingComment", method = RequestMethod.POST)
-    public String saveExistingStudent(@ModelAttribute("discussionForum") DiscussionForum df){
+    public String saveExistingStudent(@ModelAttribute("df") DiscussionForum df){
         System.out.println("Working");
         discussionForumRepository.save(df);
         return "editComment";
@@ -52,12 +53,14 @@ public class DiscussionForumController {
         return "discussionForum";
     }
 
+    // Delete comment
     @RequestMapping("/deleteComment/{id}")
     public String deleteComment(@PathVariable long id){
         discussionForumRepository.deleteById((int)id);
         return "redirect:/allComments";
     }
 
+    //Edit comment
     @RequestMapping(value="/editComment/{id}")
     public ModelAndView showEditCommentPage(@PathVariable(name = "id") long id) {
         ModelAndView mav = new ModelAndView("editComment");

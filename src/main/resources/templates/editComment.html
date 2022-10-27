@@ -2,49 +2,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Edit comment</title>
+    <meta charset="utf-8" />
+    <title>Edit Comment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body>
-<form>
-    <div alight="center">
-        <h1>Edit the comment</h1>
-        <br />
-        <div class="col-sm-4">
-            <form action="#" th:action="@{/saveExistingComment}" th:object="${df}" method="post">
-                <div alight="left">
-                    <tr>
-                        <label class="form-label" >Title</label>
-                        <td>
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="text" th:field="*{title}" class="form-control" placeholder="Title" />
-                        </td>
-                    </tr>
-                </div>
-
-                <div alight="left">
-
-                    <tr>
-                        <label class="form-label" >Comment</label>
-                        <td><input type="text" th:field="*{comment}" class="form-control" placeholder="Comment" /></td>
-                    </tr>
-                </div>
-                <br>
+<div align="center">
+    <h1>Edit Comment</h1>
+    <br />
+    <div class="col-sm-4">
+        <form action="#" th:action="@{/saveExistingComment}" th:object="${df}" method="post">
+            <div alight="left">
                 <tr>
-                    <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
-                </tr>
-                <tr>
+                    <label class="form-label" >First Name</label>
                     <td>
-                        <h3><a th:href="@{'/allComments'}">View All</a></h3>
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="text" th:field="*{title}" class="form-control" placeholder="Title" />
                     </td>
                 </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-</form>
+            </div>
 
+            <div alight="left">
+
+                <tr>
+                    <label class="form-label" >Last Name</label>
+                    <td><input type="text" th:field="*{comment}" class="form-control" placeholder="Comment" /></td>
+                </tr>
+            <br>
+            <tr>
+                <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3><a th:href="@{'/allComments'}">View All</a></h3>
+                </td>
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
 </body>
 </html>
