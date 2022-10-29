@@ -20,7 +20,6 @@ public class Announcement {
     private String description;
 
     public Announcement( String announcementName, String postedDate, String postedBy, String description) {
-        this.id = id;
         this.announcementName = announcementName;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
