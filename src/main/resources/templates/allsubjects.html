@@ -23,6 +23,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Subject ID</th>
+                        <th>Subject Code</th>
                         <th>Subject Name</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -31,6 +32,7 @@
                     <tbody>
                     <tr  th:each="subject : ${listsubject }">
                         <td th:text="${subject.id}">Subject ID</td>
+                        <td th:text="${subject.subjectCode}">Subject Code</td>
                         <td th:text="${subject.subjectName}">Subject Name</td>
 
                         <td>
