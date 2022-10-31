@@ -22,7 +22,7 @@ public class StudentController {
 
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){
-        std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
+        //std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         studentRepository.save(std);
         return "redirect:/allStudents";
     }
@@ -35,9 +35,9 @@ public class StudentController {
     }
 
     @RequestMapping(value="/editStudent/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") long id) {
+    public ModelAndView showEditStudentPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editstudent");
-        Optional<Student> std = studentRepository.findById((int)id);
+        Optional<Student> std = studentRepository.findById(id);
         mav.addObject("student", std);
         return mav;
 
@@ -55,8 +55,8 @@ public class StudentController {
         return "newstudent";
     }
     @RequestMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable long id){
-        studentRepository.deleteById((int)id);
+    public String deleteStudent(@PathVariable String id){
+        studentRepository.deleteById(id);
         return "redirect:/allStudents";
     }
 

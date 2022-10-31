@@ -3,6 +3,7 @@ package com.example.learningmanagementsystem.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,13 +14,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Announcement {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
-    private long id;
+    private String id;
     private String announcementName;
     private String postedDate;
     private String postedBy;
     private String description;
 
     public Announcement( String announcementName, String postedDate, String postedBy, String description) {
+        this.id = this.id = new ObjectId().toString();
         this.announcementName = announcementName;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
@@ -27,6 +29,6 @@ public class Announcement {
     }
 
     public Announcement() {
-
+        this.id = this.id = new ObjectId().toString();
     }
 }

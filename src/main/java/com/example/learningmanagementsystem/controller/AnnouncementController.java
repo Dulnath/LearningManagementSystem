@@ -22,7 +22,7 @@ public class AnnouncementController {
 
     @RequestMapping(value = "/saveAnnouncement", method = RequestMethod.POST)
     public String saveAnnouncement(@ModelAttribute("announcement") Announcement ancmnt){
-        ancmnt.setId(sequenceGeneratorService.generateSequence(Announcement.SEQUENCE_NAME));
+        //ancmnt.setId(sequenceGeneratorService.generateSequence(Announcement.SEQUENCE_NAME));
         announcementRepository.save(ancmnt);
         return "redirect:/allAnnouncements";
     }
@@ -35,9 +35,9 @@ public class AnnouncementController {
     }
 
     @RequestMapping(value="/editAnnouncement/{id}")
-    public ModelAndView showEditAnnouncementPage(@PathVariable(name = "id") long id) {
+    public ModelAndView showEditAnnouncementPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editannouncement");
-        Optional<Announcement> ancmnt = announcementRepository.findById((int)id);
+        Optional<Announcement> ancmnt = announcementRepository.findById(id);
         mav.addObject("announcement", ancmnt);
         return mav;
 
@@ -55,8 +55,8 @@ public class AnnouncementController {
         return "newannouncement";
     }
     @RequestMapping("/deleteAnnouncement/{id}")
-    public String deleteAnnouncement(@PathVariable long id){
-        announcementRepository.deleteById((int)id);
+    public String deleteAnnouncement(@PathVariable String id){
+        announcementRepository.deleteById(id);
         return "redirect:/allAnnouncements";
     }
 
