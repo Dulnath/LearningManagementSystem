@@ -24,15 +24,15 @@ public class Announcement {
     private String postedBy;
     private String description;
 
-    @ReadOnlyProperty
-    @DocumentReference(lookup="{'announcement':?#{#self._id} }")
-    List<Subject> subjects;
+
+
 
     public Announcement( String announcementName, String postedDate, String postedBy, String description) {
         this.announcementName = announcementName;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
         this.description = description;
+
     }
 
     public Announcement() {
