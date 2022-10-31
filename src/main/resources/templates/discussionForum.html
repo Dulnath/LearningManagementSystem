@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <title>All Students</title>
+    <meta charset="utf-8" />
+    <title>Add new topic</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
     <style>
@@ -51,43 +51,19 @@
     </div>
 </nav>
 <div class="content">
-    <h2 >Student List</h2>
-    <tr>
-        <div align = "left" >
-            <h3><a  th:href="@{'/newStudent'}">Add new</a></h3>
-        </div>
-
-    </tr>
-    <tr>
+    <h2 >Comment List</h2>
 
         <div class="col-sm-5" align = "center">
             <div class="panel-body" align = "center" >
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Student ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>DOB</th>
-                        <th>Address</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
+                        <th>Comment</th>
                     </thead>
                     <tbody>
-                    <tr  th:each="student : ${liststudent }">
-                        <td th:text="${student.firstName}">FirstName</td>
-                        <td th:text="${student.lastName}">LastName</td>
-                        <td th:text="${student.dateOfBirth}">DOB</td>
-                        <td th:text="${student.address}">Address</td>
-                        <td>
-                            <a th:href="@{'/editStudent/' + ${student.id}}">Edit</a>
-                        </td>
-                        <td>
-                            <a th:href="@{'/delete/' + ${student.id}}">Delete</a>
-                        </td>
+                    <tr  th:each="forum : ${listForum}">
+                        <td th:text="${forum}">Comment</td>
                     </tr>
-
                     </tbody>
                 </table>
 
@@ -95,11 +71,7 @@
 
         </div>
 
-    </tr>
+</div>
 
-    </tbody>
-    </table>
-</div>
-</div>
 </body>
 </html>

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
-    <title>All Students</title>
+    <meta charset="UTF-8">
+    <title>All Titles</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
     <style>
@@ -51,55 +50,33 @@
     </div>
 </nav>
 <div class="content">
-    <h2 >Student List</h2>
-    <tr>
-        <div align = "left" >
-            <h3><a  th:href="@{'/newStudent'}">Add new</a></h3>
-        </div>
+    <h2>Discussion Forum Topics</h2>
 
-    </tr>
-    <tr>
-
-        <div class="col-sm-5" align = "center">
-            <div class="panel-body" align = "center" >
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Student ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>DOB</th>
-                        <th>Address</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr  th:each="student : ${liststudent }">
-                        <td th:text="${student.firstName}">FirstName</td>
-                        <td th:text="${student.lastName}">LastName</td>
-                        <td th:text="${student.dateOfBirth}">DOB</td>
-                        <td th:text="${student.address}">Address</td>
-                        <td>
-                            <a th:href="@{'/editStudent/' + ${student.id}}">Edit</a>
-                        </td>
-                        <td>
-                            <a th:href="@{'/delete/' + ${student.id}}">Delete</a>
-                        </td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-            </div>
+    <div class="col-sm-5" align = "center">
+        <div class="panel-body" align = "center" >
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                </thead>
+                <tbody>
+                <tr  th:each="topic : ${listTopics }">
+                    <td th:text="${topic.title}">Title</td>
+                    <td><a th:href="@{'/addComment/' + ${topic.id}}">Add comment</a></td>
+                    <td><a th:href="@{'/allComments/' + ${topic.id}}">View Comments</a></td>
+                    <td>
+                        <a th:href="@{'/editTopic/' + ${topic.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/deleteTopic/' + ${topic.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
         </div>
 
-    </tr>
-
-    </tbody>
-    </table>
-</div>
+    </div>
 </div>
 </body>
 </html>
