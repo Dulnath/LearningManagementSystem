@@ -1,6 +1,7 @@
 package com.example.learningmanagementsystem.controller;
 
 
+import com.example.learningmanagementsystem.model.Announcement;
 import com.example.learningmanagementsystem.model.Subject;
 import com.example.learningmanagementsystem.repository.SubjectRepository;
 import com.example.learningmanagementsystem.services.SequenceGeneratorService;
@@ -49,6 +50,16 @@ public class SubjectController {
         model.addAttribute("listsubject",listsubject);
         return "allsubjects";
     }
+
+    @GetMapping("/oneSubject/{id}")
+    public ModelAndView showOneSubjectPage(@PathVariable(name = "id") long id) {
+        ModelAndView mav = new ModelAndView("subjectsone");
+        Optional<Subject> sub = subjectRepository.findById((int)id);
+        mav.addObject("subject", sub);
+        return mav;
+
+    }
+
 
     @GetMapping("/newSubject")
     public String newSubjectPage(Model model){

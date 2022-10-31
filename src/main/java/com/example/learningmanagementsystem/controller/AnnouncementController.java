@@ -1,6 +1,7 @@
 package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Announcement;
+import com.example.learningmanagementsystem.model.Subject;
 import com.example.learningmanagementsystem.repository.AnnouncementRepository;
 import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,15 @@ public class AnnouncementController {
         List<Announcement>  listannouncement = announcementRepository.findAll();
         model.addAttribute("listannouncement",listannouncement);
         return "allannouncements";
+    }
+
+    @GetMapping("/oneAnnouncement/{id}")
+    public ModelAndView showOneSubjectPage(@PathVariable(name = "id") long id) {
+        ModelAndView mav = new ModelAndView("subjectsone");
+        Optional<Announcement> announcement = announcementRepository.findById((int)id);
+        mav.addObject("announcement", announcement);
+        return mav;
+
     }
 
     @GetMapping("/newAnnouncement")

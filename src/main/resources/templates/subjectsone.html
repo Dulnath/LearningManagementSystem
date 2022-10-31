@@ -44,61 +44,25 @@
                 <a class="nav-link" th:href="@{'/discussionForum'}">Discussion Forum</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{'/allAnnouncements'}">Announcements</a>
+                <a class="nav-link" th:href="@{'/allAnnouncements'}">Announcements List</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="content">
-    <h2 >Subject List</h2>
+    <h2 >Announcements</h2>
     <tr>
         <div align = "left" >
-            <h3><a  th:href="@{'/newSubject'}">Add new</a></h3>
+            <h3><a  th:href="@{'/oneAnnouncement'}">Announcements</a></h3>
         </div>
 
     </tr>
-    <tr>
+
 
         <div class="col-sm-5" align = "center">
             <div class="panel-body" align = "center" >
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Subject ID</th>
-                        <th>Subject Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <th>View</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr  th:each="subject : ${listsubject }">
-                        <td th:text="${subject.id}">Subject ID</td>
-                        <td th:text="${subject.subjectName}">Subject Name</td>
-
-                        <td>
-                            <a th:href="@{'/editSubject/' + ${subject.id}}">Edit</a>
-                        </td>
-                        <td>
-                            <a th:href="@{'/remove/' + ${subject.id}}">Delete</a>
-                        </td>
-                        <td>
-                            <a th:href="@{'/oneSubject/' + ${subject.id}}">View</a>
-                        </td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
             </div>
-
-        </div>
-
-    </tr>
-
-    </tbody>
-    </table>
-    </div>
-    </div>
+</div>
+</div>
 </body>
 </html>
