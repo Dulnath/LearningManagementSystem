@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Titles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div>
+    <h2>Discussion Forum Topics</h2>
+
+    <div class="col-sm-5" align = "center">
+        <div class="panel-body" align = "center" >
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                </thead>
+                <tbody>
+                <tr  th:each="topic : ${listTopics }">
+                    <td th:text="${topic.title}">Title</td>
+                    <td><a th:href="@{'/addComment/' + ${topic.id}}">Add comment</a></td>
+                    <td><a th:href="@{'/allComments/' + ${topic.id}}">View Comments</a></td>
+                    <td>
+                        <a th:href="@{'/editTopic/' + ${topic.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/deleteTopic/' + ${topic.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

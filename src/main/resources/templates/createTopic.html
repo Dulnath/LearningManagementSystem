@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add comment</title>
+    <title>Add Topic</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body>
-<form action="#" th:action="@{/saveComment}" th:object="${listComment}" method="post">
+<form action="#" th:action="@{/saveTitle}" th:object="${topic}" method="post">
     <div alight="left">
         <tr>
-            <label class="form-label" >Comment</label>
+            <label class="form-label" >Title</label>
             <td>
-                <input type="hidden" th:field="*{id}" />
-                <input type="text" th:field="*{comment}" class="form-control" placeholder="Add comment" />
+                <input type="text" th:field="*{title}" class="form-control" placeholder="Add title" />
             </td>
         </tr>
     </div>
