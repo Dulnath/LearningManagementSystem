@@ -82,12 +82,12 @@
                         <td th:text="${teacher.lastName}">LastName</td>
                         <td th:text="${teacher.nic}">NIC</td>
                         <td th:text="${teacher.address}">Address</td>
-                        <td th:text="${teacher.mobileNumber">Mobile No</td>
+                        <td th:text="${teacher.mobileNumber}">Mobile No</td>
                         <td>
                             <a th:href="@{'/editTeacher/' + ${teacher.id}}">Edit</a>
                         </td>
                         <td>
-                            <a th:href="@{'/delete/' + ${teacher.id}}">Delete</a>
+                            <a th:href="@{'/deleteTeacher/' + ${teacher.id}}">Delete</a>
                         </td>
                     </tr>
 
