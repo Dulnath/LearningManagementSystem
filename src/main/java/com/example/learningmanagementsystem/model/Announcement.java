@@ -26,16 +26,16 @@ public class Announcement {
     private String postedDate;
     private String postedBy;
     private String description;
+    private String sub_id;
 
 
-
-
-    public Announcement( String announcementName, String postedDate, String postedBy, String description) {
+    public Announcement( String announcementName, String postedDate, String postedBy, String description, String sub_id) {
         this.id = new ObjectId().toString();
         this.announcementName = announcementName;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
         this.description = description;
+        this.sub_id=sub_id;
 
     }
 

@@ -66,6 +66,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Announcement</th>
+                        <th>Subject ID</th>
                         <th>Posted By</th>
                         <th>Posted Date</th>
                         <th>Description</th>
@@ -76,6 +77,7 @@
                     <tbody>
                     <tr  th:each="announcement : ${listannouncement }">
                         <td th:text="${announcement.announcementName}">Announcement Name</td>
+                        <td th:text="${announcement.sub_id}">Subject ID</td>
                         <td th:text="${announcement.postedBy}">Posted By</td>
                         <td th:text="${announcement.postedDate}">Posted Date</td>
                         <td th:text="${announcement.description}">Description</td>
