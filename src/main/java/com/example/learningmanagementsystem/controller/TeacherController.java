@@ -25,9 +25,9 @@ public class TeacherController {
     }
 
     @RequestMapping(value = "/saveExistingTeacher", method = RequestMethod.POST)
-    public String saveExistingTeacher(@ModelAttribute("teacher") Teacher teach){
+    public String saveExistingTeacher(@ModelAttribute("teacher") Teacher teacher){
         System.out.println("Working");
-        teacherRepository.save(teach);
+        teacherRepository.save(teacher);
         return "editteacher";
     }
 
