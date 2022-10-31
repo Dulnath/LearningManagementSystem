@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
-  <title>Edit Subject</title>
+  <title>Edit Existing Student</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
   <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
   <style>
@@ -24,7 +24,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
   <a class="navbar-brand text-light" href="#">LMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
         <a class="nav-link" th:href="@{'/allTeachers'}">View Teachers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{'/allTopics'}">Discussion Forum</a>
+        <a class="nav-link" th:href="@{'/discussionForum'}">Discussion Forum</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" th:href="@{'/allAnnouncements'}">Announcements</a>
@@ -51,41 +51,52 @@
   </div>
 </nav>
 <div class="content">
-  <h1>Edit Selected Subject</h1>
+  <h1>Edit Existing Teacher</h1>
   <br />
   <div class="col-sm-4">
-    <form action="#" th:action="@{/saveExistingSubject}" th:object="${subject}" method="post">
+    <form action="#" th:action="@{/saveExistingStudent}" th:object="${teacher}" method="post">
       <div alight="left">
         <tr>
-          <label class="form-label" >Subject Name</label>
+          <label class="form-label" >First Name</label>
           <td>
             <input type="hidden" th:field="*{id}" />
-            <input type="text" th:field="*{subjectName}" class="form-control" placeholder="Subject Name" />
+            <input type="text" th:field="*{firstName}" class="form-control" placeholder="Student Name" />
           </td>
         </tr>
       </div>
+
       <div alight="left">
 
         <tr>
-          <label class="form-label" >Subject Code</label>
-          <td><input type="text" th:field="*{subjectCode}" class="form-control" placeholder="Subject Code" /></td>
+          <label class="form-label" >Last Name</label>
+          <td><input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" /></td>
         </tr>
       </div>
       <div alight="left">
-
         <tr>
-          <label class="form-label" > No. of Credits</label>
-          <td><input type="text" th:field="*{noOfCredits}" class="form-control" placeholder="No. of Credits" /></td>
+          <label class="form-label" >Nic</label>
+          <td><input type="text" th:field="*{nic}" class="form-control" placeholder="NIC" /></td>
         </tr>
       </div>
-
+      <div alight="left">
+        <tr>
+          <label class="form-label" >Mobile No</label>
+          <td><input type="text" th:field="*{mobileNumber}" class="form-control" placeholder="Mobile No" /></td>
+        </tr>
+      </div>
+      <div alight="left">
+        <tr>
+          <label class="form-label" >Address</label>
+          <td><input type="text" th:field="*{address}" class="form-control" placeholder="Address" /></td>
+        </tr>
+      </div>
       <br>
       <tr>
         <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
       </tr>
       <tr>
         <td>
-          <h3><a th:href="@{'/allSubjects'}">View All</a></h3>
+          <h3><a th:href="@{'/allTeachers'}">View All</a></h3>
         </td>
       </tr>
       </table>
