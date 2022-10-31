@@ -28,12 +28,12 @@ public class StudentController {
     public String saveExistingStudent(@ModelAttribute("student") Student std){
         System.out.println("Working");
         studentRepository.save(std);
-        return "editstudent";
+        return "editsStudent";
     }
 
     @RequestMapping(value="/editStudent/{id}")
     public ModelAndView showEditStudentPage(@PathVariable(name = "id") String id) {
-        ModelAndView mav = new ModelAndView("editstudent");
+        ModelAndView mav = new ModelAndView("editsStudent");
         Optional<Student> std = studentRepository.findById(id);
         mav.addObject("student", std);
         return mav;
