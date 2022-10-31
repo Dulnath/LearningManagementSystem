@@ -1,10 +1,8 @@
 package com.example.learningmanagementsystem.controller;
 
 
-import com.example.learningmanagementsystem.model.Announcement;
 import com.example.learningmanagementsystem.model.Subject;
 import com.example.learningmanagementsystem.repository.SubjectRepository;
-import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +16,6 @@ import java.util.Optional;
 public class SubjectController {
     @Autowired
     private SubjectRepository subjectRepository;
-
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
 
     @RequestMapping(value = "/saveSubject", method = RequestMethod.POST)
     public String saveSubject(@ModelAttribute("subject") Subject sub){
@@ -46,13 +41,10 @@ public class SubjectController {
     }
     @GetMapping("/allSubjects")
     public String getSubjects(Model model){
-        List<Subject>  listsubject = subjectRepository.findAll();
+        List<Subject> listsubject = subjectRepository.findAll();
         model.addAttribute("listsubject",listsubject);
         return "allsubjects";
     }
-
-
-
 
     @GetMapping("/newSubject")
     public String newSubjectPage(Model model){

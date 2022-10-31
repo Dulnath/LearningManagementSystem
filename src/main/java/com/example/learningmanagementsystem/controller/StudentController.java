@@ -2,7 +2,6 @@ package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Student;
 import com.example.learningmanagementsystem.repository.StudentRepository;
-import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +15,6 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
-
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
 
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){

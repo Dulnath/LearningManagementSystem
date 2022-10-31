@@ -1,11 +1,7 @@
 package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Announcement;
-import com.example.learningmanagementsystem.model.Student;
-import com.example.learningmanagementsystem.model.Subject;
 import com.example.learningmanagementsystem.repository.AnnouncementRepository;
-import com.example.learningmanagementsystem.repository.StudentRepository;
-import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +15,6 @@ import java.util.Optional;
 public class AnnouncementController {
     @Autowired
     private AnnouncementRepository announcementRepository;
-
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
 
     @RequestMapping(value = "/saveAnnouncement", method = RequestMethod.POST)
     public String saveAnnouncement(@ModelAttribute("announcement") Announcement ancmnt){

@@ -1,15 +1,12 @@
 package com.example.learningmanagementsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 
 @Getter
@@ -19,22 +16,20 @@ import java.util.List;
 public class Subject {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
-    private long id;
+
+    @JsonProperty("id")
+    private String id;
     private String subjectName;
-private Announcement announcement;
+    private String subjectCode;
+    private double noOfCredits;
 
-    /*
-@OneToMany(targetEntity = Announcement.class,cascade = CascadeType.ALL)
-@JoinColumn(name="sa_fk",referencedColumnName = "id")
- private List<Announcement> announcements;
- */
-
-    public Subject(String subjectName) {
-
+    public Subject(String subjectName, String subjectCode, double noOfCredits) {
+        this.id = new ObjectId().toString();
         this.subjectName = subjectName;
-
+        this.subjectCode = subjectCode;
+        this.noOfCredits = noOfCredits;
     }
     public Subject() {
-
+        this.id = new ObjectId().toString();
     }
 }
