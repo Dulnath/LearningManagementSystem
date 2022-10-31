@@ -8,9 +8,10 @@
 5. 195097A  Witharana D.N.W - CRUD Operations of Teacher
 
 ##Files
-Controllers - Student, Subject, Announcement, Teacher , DiscussionForum
-Models - Student, Subject, Announcement, Teacher , DiscussionForum
-Repository - StudentRepository, SubjectRepository, AnnouncementRepository, TeacherRepository , DiscussionForumRepository
+
+1.Controllers - Student, Subject, Announcement, Teacher , DiscussionForum
+2.Models - Student, Subject, Announcement, Teacher , DiscussionForum
+3.Repository - StudentRepository, SubjectRepository, AnnouncementRepository, TeacherRepository , DiscussionForumRepository
 
 
  
