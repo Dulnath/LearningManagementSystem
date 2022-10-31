@@ -65,17 +65,18 @@
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Subject ID</th>
+                        <th>Subject Code</th>
                         <th>Subject Name</th>
+                        <th>No. of Credits</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr  th:each="subject : ${listsubject }">
-                        <td th:text="${subject.id}">Subject ID</td>
+                        <td th:text="${subject.subjectCode}">Subject ID</td>
                         <td th:text="${subject.subjectName}">Subject Name</td>
-
+                        <td th:text="${subject.noOfCredits}">Subject Name</td>
                         <td>
                             <a th:href="@{'/editSubject/' + ${subject.id}}">Edit</a>
                         </td>

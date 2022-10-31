@@ -57,11 +57,25 @@
     <form action="#" th:action="@{/saveExistingSubject}" th:object="${subject}" method="post">
       <div alight="left">
         <tr>
-          <label class="form-label" >First Name</label>
+          <label class="form-label" >Subject Name</label>
           <td>
             <input type="hidden" th:field="*{id}" />
             <input type="text" th:field="*{subjectName}" class="form-control" placeholder="Subject Name" />
           </td>
+        </tr>
+      </div>
+      <div alight="left">
+
+        <tr>
+          <label class="form-label" >Subject Code</label>
+          <td><input type="text" th:field="*{subjectCode}" class="form-control" placeholder="Subject Code" /></td>
+        </tr>
+      </div>
+      <div alight="left">
+
+        <tr>
+          <label class="form-label" > No. of Credits</label>
+          <td><input type="text" th:field="*{noOfCredits}" class="form-control" placeholder="No. of Credits" /></td>
         </tr>
       </div>
 

@@ -16,15 +16,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Subject {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
+
     @JsonProperty("id")
     private String id;
     private String subjectName;
+    private String subjectCode;
+    private double noOfCredits;
 
-
-    public Subject(String subjectName) {
+    public Subject(String subjectName, String subjectCode, double noOfCredits) {
         this.id = new ObjectId().toString();
         this.subjectName = subjectName;
-
+        this.subjectCode = subjectCode;
+        this.noOfCredits = noOfCredits;
     }
     public Subject() {
         this.id = new ObjectId().toString();
