@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>All Announcements</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
     <style>
@@ -64,18 +65,16 @@
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Announcement ID</th>
-                        <th>Announcement Name</th>
+                        <th>Announcement</th>
                         <th>Posted By</th>
                         <th>Posted Date</th>
-                        <th>Description</th>>
+                        <th>Description</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr  th:each="announcement : ${listannouncement }">
-                        <td th:text="${announcement.id}">Announcement ID</td>
                         <td th:text="${announcement.announcementName}">Announcement Name</td>
                         <td th:text="${announcement.postedBy}">Posted By</td>
                         <td th:text="${announcement.postedDate}">Posted Date</td>

@@ -1,8 +1,10 @@
 package com.example.learningmanagementsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,13 +16,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Student {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
-    private long id;
+    @JsonProperty("id")
+    private String id;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String address;
 
     public Student(String firstName, String lastName, String dateOfBirth, String address) {
+        this.id = new ObjectId().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -28,6 +32,6 @@ public class Student {
     }
 
     public Student() {
-
+        this.id = new ObjectId().toString();
     }
 }

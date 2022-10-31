@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>All Subjects</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
     <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
     <style>
@@ -49,7 +50,7 @@
         </ul>
     </div>
 </nav>
-<div class="content">
+<div class="contents">
     <h2 >Subject List</h2>
     <tr>
         <div align = "left" >
@@ -64,8 +65,9 @@
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Subject ID</th>
+                        <th>Subject Code</th>
                         <th>Subject Name</th>
+                        <th>No. of Credits</th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th>View</th>
@@ -73,9 +75,9 @@
                     </thead>
                     <tbody>
                     <tr  th:each="subject : ${listsubject }">
-                        <td th:text="${subject.id}">Subject ID</td>
+                        <td th:text="${subject.subjectCode}">Subject ID</td>
                         <td th:text="${subject.subjectName}">Subject Name</td>
-
+                        <td th:text="${subject.noOfCredits}">Subject Name</td>
                         <td>
                             <a th:href="@{'/editSubject/' + ${subject.id}}">Edit</a>
                         </td>

@@ -24,7 +24,7 @@ public class SubjectController {
 
     @RequestMapping(value = "/saveSubject", method = RequestMethod.POST)
     public String saveSubject(@ModelAttribute("subject") Subject sub){
-        sub.setId(sequenceGeneratorService.generateSequence(Subject.SEQUENCE_NAME));
+        //sub.setId(sequenceGeneratorService.generateSequence(Subject.SEQUENCE_NAME));
         subjectRepository.save(sub);
         return "redirect:/allSubjects";
     }
@@ -37,9 +37,9 @@ public class SubjectController {
     }
 
     @RequestMapping(value="/editSubject/{id}")
-    public ModelAndView showEditSubjectPage(@PathVariable(name = "id") long id) {
+    public ModelAndView showEditSubjectPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editsubject");
-        Optional<Subject> sub = subjectRepository.findById((int)id);
+        Optional<Subject> sub = subjectRepository.findById(id);
         mav.addObject("subject", sub);
         return mav;
 
@@ -51,14 +51,7 @@ public class SubjectController {
         return "allsubjects";
     }
 
-    @GetMapping("/oneSubject/{id}")
-    public ModelAndView showOneSubjectPage(@PathVariable(name = "id") long id) {
-        ModelAndView mav = new ModelAndView("subjectsone");
-        Optional<Subject> sub = subjectRepository.findById((int)id);
-        mav.addObject("subject", sub);
-        return mav;
 
-    }
 
 
     @GetMapping("/newSubject")
@@ -67,8 +60,8 @@ public class SubjectController {
         return "newsubject";
     }
     @RequestMapping("/remove/{id}")
-    public String deleteSubject(@PathVariable long id){
-        subjectRepository.deleteById((int)id);
+    public String deleteSubject(@PathVariable String id){
+        subjectRepository.deleteById(id);
         return "redirect:/allSubjects";
     }
 }
