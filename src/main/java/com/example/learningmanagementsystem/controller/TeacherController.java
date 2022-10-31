@@ -39,7 +39,7 @@ public class TeacherController {
 
     @RequestMapping(value="/editTeacher/{id}")
     public ModelAndView showEditTeacherPage(@PathVariable(name = "id") String id) {
-        ModelAndView mav = new ModelAndView("edittaecher");
+        ModelAndView mav = new ModelAndView("editteacher");
         Optional<Teacher> tch = teacherRepository.findById(id);
         mav.addObject("teacher", tch);
         return mav;
@@ -48,7 +48,7 @@ public class TeacherController {
     @GetMapping("/allTeachers")
     public String getTeachers(Model model){
         List<Teacher>  listteacher = teacherRepository.findAll();
-        model.addAttribute("liststudent",listteacher);
+        model.addAttribute("listteacher",listteacher);
         return "allteachers";
     }
 
@@ -64,4 +64,3 @@ public class TeacherController {
     }
 
 }
-
