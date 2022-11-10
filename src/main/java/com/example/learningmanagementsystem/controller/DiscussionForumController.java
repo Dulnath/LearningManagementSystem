@@ -87,10 +87,6 @@ public class DiscussionForumController {
         model.addAttribute("listForum",dfn.getComment());
         System.out.println("dfn=" + dfn);
         return "discussionForum";
-//        ModelAndView mav = new ModelAndView("discussionForum");
-//        Optional<DiscussionForum> df = discussionForumRepository.findById((int)id);
-//        mav.addObject("listForum", df);
-//        return mav;
     }
 
     // Get all topics
