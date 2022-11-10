@@ -22,13 +22,6 @@ public class AnnouncementController {
         return "redirect:/allAnnouncements";
     }
 
-    @RequestMapping(value = "/saveExistingAnnouncement", method = RequestMethod.POST)
-    public String saveExistingAnnouncement(@ModelAttribute("announcement") Announcement ancmnt){
-        System.out.println("Working");
-        announcementRepository.save(ancmnt);
-        return "editannouncement";
-    }
-
     @RequestMapping(value="/editAnnouncement/{id}")
     public ModelAndView showEditAnnouncementPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editannouncement");

@@ -24,13 +24,6 @@ public class StudentController {
         return "redirect:/allStudents";
     }
 
-    @RequestMapping(value = "/saveExistingStudent", method = RequestMethod.POST)
-    public String saveExistingStudent(@ModelAttribute("student") Student std){
-        System.out.println("Working");
-        studentRepository.save(std);
-        return "editsStudent";
-    }
-
     @RequestMapping(value="/editStudent/{id}")
     public ModelAndView showEditStudentPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editsStudent");

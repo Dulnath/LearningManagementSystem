@@ -20,22 +20,12 @@ public class TeacherController {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
-
     @RequestMapping(value = "/saveTeacher", method = RequestMethod.POST)
     public String saveTeacher(@ModelAttribute("teacher") Teacher tch){
-        //std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         teacherRepository.save(tch);
         return "redirect:/allTeachers";
     }
 
-    @RequestMapping(value = "/saveExistingTeacher", method = RequestMethod.POST)
-    public String saveExistingTeacher(@ModelAttribute("teacher") Teacher tch){
-        System.out.println("Working");
-        teacherRepository.save(tch);
-        return "editteacher";
-    }
 
     @RequestMapping(value="/editTeacher/{id}")
     public ModelAndView showEditTeacherPage(@PathVariable(name = "id") String id) {

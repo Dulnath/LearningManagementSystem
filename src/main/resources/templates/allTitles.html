@@ -58,6 +58,9 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>Title</th>
+                    <div align = "left" >
+                        <h3><a  th:href="@{'/addTopic'}">Add new</a></h3>
+                    </div>
                 </thead>
                 <tbody>
                 <tr  th:each="topic : ${listTopics }">

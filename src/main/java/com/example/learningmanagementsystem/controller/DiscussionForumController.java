@@ -25,7 +25,11 @@ public class DiscussionForumController {
     @RequestMapping (value="/saveComment", method=RequestMethod.POST)
     public String saveComment(@ModelAttribute("listComment") DiscussionForum df){
         Optional<DiscussionForum> dfNew = discussionForumRepository.findById((int)df.getId());
-        dfNew.get().addNewComment(df.getComment());
+        if(dfNew.get().getComment() == null){
+            dfNew.get().setComment(df.getComment());
+        }else{
+            dfNew.get().addNewComment(df.getComment());
+        }
         DiscussionForum dfFinal = new DiscussionForum();
         dfFinal.setId(df.getId());
         dfFinal.setTitle(dfNew.get().getTitle());

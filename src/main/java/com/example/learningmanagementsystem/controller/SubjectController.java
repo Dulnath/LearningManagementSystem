@@ -24,13 +24,6 @@ public class SubjectController {
         return "redirect:/allSubjects";
     }
 
-    @RequestMapping(value = "/saveExistingSubject", method = RequestMethod.POST)
-    public String saveExistingSubject(@ModelAttribute("subject") Subject sub){
-        System.out.println("Working");
-        subjectRepository.save(sub);
-        return "editsubject";
-    }
-
     @RequestMapping(value="/editSubject/{id}")
     public ModelAndView showEditSubjectPage(@PathVariable(name = "id") String id) {
         ModelAndView mav = new ModelAndView("editsubject");
