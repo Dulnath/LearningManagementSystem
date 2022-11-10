@@ -1,9 +1,8 @@
 package com.example.learningmanagementsystem.controller;
 
 
-import com.example.learningmanagementsystem.model.Student;
+
 import com.example.learningmanagementsystem.model.Teacher;
-import com.example.learningmanagementsystem.repository.StudentRepository;
 import com.example.learningmanagementsystem.repository.TeacherRepository;
 import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
