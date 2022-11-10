@@ -19,7 +19,6 @@ public class StudentController {
 
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student std){
-        //std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         studentRepository.save(std);
         return "redirect:/allStudents";
     }

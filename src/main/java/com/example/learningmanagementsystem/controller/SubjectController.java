@@ -19,7 +19,6 @@ public class SubjectController {
 
     @RequestMapping(value = "/saveSubject", method = RequestMethod.POST)
     public String saveSubject(@ModelAttribute("subject") Subject sub){
-        //sub.setId(sequenceGeneratorService.generateSequence(Subject.SEQUENCE_NAME));
         subjectRepository.save(sub);
         return "redirect:/allSubjects";
     }
@@ -41,6 +40,7 @@ public class SubjectController {
 
     @GetMapping("/newSubject")
     public String newSubjectPage(Model model){
+        //Subject sub = new Subject();...sub
         model.addAttribute("subject",new Subject());
         return "newsubject";
     }

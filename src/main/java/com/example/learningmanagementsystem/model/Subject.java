@@ -14,8 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Document(collection="Subject")
 public class Subject {
-    @Transient
-    public static final String SEQUENCE_NAME = "users_sequence";
 
     @JsonProperty("id")
     private String id;
