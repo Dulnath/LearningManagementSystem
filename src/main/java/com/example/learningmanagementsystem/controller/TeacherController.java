@@ -18,17 +18,16 @@ public class TeacherController {
     @Autowired
     private TeacherRepository teacherRepository;
 
+    @GetMapping("/newTeacher")
+    public String newTeacherPage(Model model){
+        model.addAttribute("teacher",new Teacher());
+        return "newteacher";
+    }
+
     @RequestMapping(value = "/saveTeacher", method = RequestMethod.POST)
     public String saveTeacher(@ModelAttribute("teacher") Teacher tch){
         teacherRepository.save(tch);
         return "redirect:/allTeachers";
-    }
-
-    @RequestMapping(value = "/saveExistingTeacher", method = RequestMethod.POST)
-    public String saveExistingTeacher(@ModelAttribute("teacher") Teacher tch){
-        System.out.println("Working");
-        teacherRepository.save(tch);
-        return "editteacher";
     }
 
     @RequestMapping(value="/editTeacher/{id}")
@@ -46,11 +45,6 @@ public class TeacherController {
         return "allteachers";
     }
 
-    @GetMapping("/newTeacher")
-    public String newTeacherPage(Model model){
-        model.addAttribute("teacher",new Teacher());
-        return "newteacher";
-    }
     @RequestMapping("/deleteTeacher/{id}")
     public String deleteTeacher(@PathVariable String id){
         teacherRepository.deleteById(id);
