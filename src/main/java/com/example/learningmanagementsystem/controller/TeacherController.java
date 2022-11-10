@@ -4,7 +4,6 @@ package com.example.learningmanagementsystem.controller;
 
 import com.example.learningmanagementsystem.model.Teacher;
 import com.example.learningmanagementsystem.repository.TeacherRepository;
-import com.example.learningmanagementsystem.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,8 @@ public class TeacherController {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    @Autowired
-    private SequenceGeneratorService sequenceGeneratorService;
-
     @RequestMapping(value = "/saveTeacher", method = RequestMethod.POST)
     public String saveTeacher(@ModelAttribute("teacher") Teacher tch){
-        //std.setId(sequenceGeneratorService.generateSequence(Student.SEQUENCE_NAME));
         teacherRepository.save(tch);
         return "redirect:/allTeachers";
     }
@@ -42,8 +37,8 @@ public class TeacherController {
         Optional<Teacher> tch = teacherRepository.findById(id);
         mav.addObject("teacher", tch);
         return mav;
-
     }
+
     @GetMapping("/allTeachers")
     public String getTeachers(Model model){
         List<Teacher>  listteacher = teacherRepository.findAll();
