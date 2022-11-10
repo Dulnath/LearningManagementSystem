@@ -13,8 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Document(collection="Announcement")
 public class Announcement {
-    @Transient
-    public static final String SEQUENCE_NAME = "users_sequence";
     @JsonProperty("id")
     private String id;
     private String announcementName;

@@ -25,14 +25,12 @@ public class DiscussionForumController {
     @RequestMapping (value="/saveComment", method=RequestMethod.POST)
     public String saveComment(@ModelAttribute("listComment") DiscussionForum df){
         Optional<DiscussionForum> dfNew = discussionForumRepository.findById((int)df.getId());
-        df.setTitle(dfNew.get().getTitle());
-        // Check if there are existing comments
-        if(dfNew.get().getComment() == null){
-            discussionForumRepository.save(df);
-        }else{
-            df.addNewComment(dfNew.get().getComment());
-            discussionForumRepository.save(df);
-        }
+        dfNew.get().addNewComment(df.getComment());
+        DiscussionForum dfFinal = new DiscussionForum();
+        dfFinal.setId(df.getId());
+        dfFinal.setTitle(dfNew.get().getTitle());
+        dfFinal.setComment(dfNew.get().getComment());
+        discussionForumRepository.save(dfFinal);
         return "redirect:/allTopics";
     }
 
@@ -61,7 +59,8 @@ public class DiscussionForumController {
     @RequestMapping(value = "/addComment/{id}")
     public ModelAndView addComment(@PathVariable long id, Model model){
         ModelAndView mav = new ModelAndView("addComment");
-        Optional<DiscussionForum> df = discussionForumRepository.findById((int)id);
+        DiscussionForum df = new DiscussionForum();
+        df.setId(id);
         mav.addObject("listComment", df);
         System.out.println(mav);
         return mav;
